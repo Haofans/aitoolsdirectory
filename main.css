@@ -1,0 +1,513 @@
+/* 主题变量 */
+:root {
+    --primary-color: #3a86ff;
+    --secondary-color: #8338ec;
+    --text-color: #333;
+    --bg-color: #f8f9fa;
+    --card-bg: #fff;
+    --card-border: #eaeaea;
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --tag-bg: #e9ecef;
+    --tag-color: #495057;
+    --free-color: #38b000;
+    --freemium-color: #3a86ff;
+    --paid-color: #fb5607;
+    --editors-pick-color: #ffbe0b;
+    --header-bg: linear-gradient(135deg, #3a86ff 0%, #8338ec 100%);
+}
+
+/* 暗色主题 */
+[data-theme="dark"] {
+    --primary-color: #4895ef;
+    --secondary-color: #9d4edd;
+    --text-color: #e9ecef;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --card-border: #333;
+    --card-shadow: rgba(0, 0, 0, 0.3);
+    --tag-bg: #2a2a2a;
+    --tag-color: #adb5bd;
+    --free-color: #52b788;
+    --freemium-color: #4895ef;
+    --paid-color: #e85d04;
+    --editors-pick-color: #faa307;
+    --header-bg: linear-gradient(135deg, #4895ef 0%, #9d4edd 100%);
+}
+
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 头部样式 */
+header {
+    background: var(--header-bg);
+    color: white;
+    padding: 60px 0 30px;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,208C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+    background-size: cover;
+    z-index: 0;
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* 标题样式 */
+h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
+
+/* 统计信息 */
+.stats {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.stats strong {
+    font-weight: 600;
+}
+
+/* 控制区域 */
+.controls {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px var(--card-shadow);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 搜索区域 */
+.search-container {
+    flex: 1;
+    min-width: 300px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.2);
+}
+
+/* 过滤器 */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    background-color: var(--tag-bg);
+    color: var(--tag-color);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* 主题切换按钮 */
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 工具卡片容器 */
+.tools-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+/* 工具卡片 */
+.tool-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px var(--card-shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 1px solid var(--card-border);
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px var(--card-shadow);
+}
+
+.tool-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.tool-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    margin-right: 15px;
+    object-fit: contain;
+    background-color: rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--card-border);
+}
+
+.tool-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-color);
+    line-height: 1.3;
+}
+
+.tool-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.tool-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* 工具定价标签 */
+.tool-pricing {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tool-pricing.free {
+    background-color: rgba(56, 176, 0, 0.15);
+    color: var(--free-color);
+}
+
+.tool-pricing.freemium {
+    background-color: rgba(58, 134, 255, 0.15);
+    color: var(--freemium-color);
+}
+
+.tool-pricing.paid {
+    background-color: rgba(251, 86, 7, 0.15);
+    color: var(--paid-color);
+}
+
+/* 工具评分 */
+.tool-rating {
+    color: #ffc107;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.tool-rating span {
+    margin-left: 5px;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* 编辑推荐标签 */
+.editors-pick {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(255, 190, 11, 0.2);
+    color: var(--editors-pick-color);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* 工具描述 */
+.tool-description {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: var(--text-color);
+    opacity: 0.9;
+    flex-grow: 1;
+    line-height: 1.6;
+}
+
+/* 工具标签 */
+.tool-tags {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tool-tag {
+    background-color: var(--tag-bg);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--tag-color);
+    font-weight: 500;
+}
+
+/* 工具卡片页脚 */
+.tool-footer {
+    padding: 20px;
+    border-top: 1px solid var(--card-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tool-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    gap: 8px;
+}
+
+.tool-link:hover {
+    background-color: var(--secondary-color);
+}
+
+.tool-detail {
+    font-size: 13px;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+.tool-detail a {
+    color: var(--primary-color);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.tool-detail a:hover {
+    text-decoration: underline;
+}
+
+/* 页码标签 */
+.page-badge {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 页脚 */
+footer {
+    margin-top: 50px;
+    padding: 30px 0;
+    text-align: center;
+    color: var(--text-color);
+    opacity: 0.7;
+    font-size: 14px;
+}
+
+/* 无结果提示 */
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 50px 0;
+    color: var(--text-color);
+    opacity: 0.7;
+    font-size: 1.2rem;
+    display: none;
+}
+
+/* 导航栏 */
+.navbar {
+    background-color: var(--card-bg);
+    padding: 10px 0;
+    box-shadow: 0 2px 4px var(--card-shadow);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: var(--primary-color);
+}
+
+/* 页脚内容 */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.social-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.social-links li a {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-links li a:hover {
+    color: var(--primary-color);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    
+    .tools-container {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .tool-header {
+        padding: 15px;
+    }
+    
+    .tool-icon {
+        width: 50px;
+        height: 50px;
+    }
+} 
