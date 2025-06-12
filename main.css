@@ -59,9 +59,9 @@ body {
 header {
     background: var(--header-bg);
     color: white;
-    padding: 60px 0 30px;
+    padding: 120px 0 30px;
     text-align: center;
-    margin-bottom: 40px;
+    margin-top: 0;
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -422,39 +422,58 @@ footer {
 
 /* 导航栏 */
 .navbar {
-    background-color: var(--card-bg);
-    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 1rem 0;
     box-shadow: 0 2px 4px var(--card-shadow);
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .navbar .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 1.5rem;
 }
 
 .navbar .logo {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 700;
     color: var(--text-color);
     text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.navbar .logo:hover {
+    color: var(--primary-color);
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links li a {
     color: var(--text-color);
     text-decoration: none;
     font-size: 1rem;
-    transition: color 0.3s ease;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
 }
 
 .nav-links li a:hover {
     color: var(--primary-color);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 /* 页脚内容 */
@@ -509,5 +528,44 @@ footer {
     .tool-icon {
         width: 50px;
         height: 50px;
+    }
+    
+    .navbar {
+        padding: 0.5rem 0;
+    }
+    
+    .navbar .container {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        padding: 1rem 0;
+    }
+    
+    .nav-links li a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem 1rem;
+    }
+    
+    header {
+        padding-top: 160px; /* 增加移动端导航栏的空间 */
+    }
+}
+
+/* 暗色主题导航栏 */
+@media (prefers-color-scheme: dark) {
+    .navbar {
+        background-color: rgba(17, 24, 39, 0.95);
+    }
+    
+    .nav-links li a:hover {
+        background-color: rgba(255, 255, 255, 0.05);
     }
 } 
